@@ -12,27 +12,27 @@ class envClass:
     def __init__(self, nbRow, nbCol):
         self.nbRow = nbRow
         self.nbCol = nbCol
-        self.map = []
-        line = self.nbCol*[0]
-        for i in range(self.nbRow):
-            self.map.append(line.copy())
+        self.map = zeros((nbRow,nbCol)) #cria matriz[nbRow x nbCol] representando o ambiente
 
     def addObstacle(self, row, col):
         self.map[row][col] = -1
 
 
+
 class robotClass:
 
-    def __init__(...):
-        self.nbRow =
-        self.nbCol =
-        self.row =
-        self.col =
-        self.map =
-        self.sensorRange =
-        self.path =
+    def __init__(self, nbRow, nbCol, robotRow, robotCol, sensorRange):
+        self.nbRow = nbRow
+        self.nbCol = nbCol
+        self.row = robotRow
+        self.col = robotCol
+        self.map = zeros((nbRow,nbCol))
+        self.sensorRange = sensorRange
+        self.path = []
 
-    def setGoal(...):
+    def setGoal(self, goalRow, goalCol):
+        self.goalRow = goalRow
+        self.goalCol = goalCol
 
     def updateMap(...):
 

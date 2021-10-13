@@ -4,6 +4,7 @@
 # Alana Ingrid Fernandes Costa da Silva e Edgleyson Pereira da Silva
 # Projeto 1
 
+from numpy import*
 from random import randrange
 from plotLib import plotRealEnv, plotRobEnv, plotPlanningMap
 
@@ -34,7 +35,13 @@ class robotClass:
         self.goalRow = goalRow
         self.goalCol = goalCol
 
-    def updateMap(...):
+    def updateMap(self, refreshMap):
+        for i in range(-self.sensorRange, self.sensorRange):
+            for j in range(-self.sensorRange, self.sensorRange):
+                row = self.row + i
+                col = self.col + j
+                if row < self.nbRow and col < self.nbCol:
+                    self.map[row][col] = refreshMap[row][col]
 
     def pathPlanner(...):
 

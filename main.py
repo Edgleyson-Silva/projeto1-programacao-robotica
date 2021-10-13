@@ -36,8 +36,8 @@ class robotClass:
         self.goalCol = goalCol
 
     def updateMap(self, refreshMap):
-        for i in range(-self.sensorRange, self.sensorRange):
-            for j in range(-self.sensorRange, self.sensorRange):
+        for i in range(-self.sensorRange, self.sensorRange+1):
+            for j in range(-self.sensorRange, self.sensorRange+1):
                 row = self.row + i
                 col = self.col + j
                 if row < self.nbRow and col < self.nbCol:

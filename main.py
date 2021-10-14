@@ -18,6 +18,8 @@ class envClass:
     def addObstacle(self, row, col):
         self.map[row][col] = -1
 
+    def removeObstacle(self, row, col):
+        self.map[row][col] = 0
 
 
 class robotClass:

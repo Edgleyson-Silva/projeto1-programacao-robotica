@@ -43,7 +43,30 @@ class robotClass:
                 if row < self.nbRow and col < self.nbCol:
                     self.map[row][col] = refreshMap[row][col]
 
-    def pathPlanner(...):
+    def pathPlanner(self):
+        pathMap = zeros((self.nbRow, self.nbCol))
+        value = 1
+        n = 1
+        if self.nbRow > self.nbCol:
+            maxCel = 2 * self.nbRow - 1
+        elif self.nbCol > self.nbRow:
+            maxCel = 2 * self.nbCol - 1
+        else:
+            maxCel = 2 * self.nbRow - 1
+        pathMap[self.goalRow, self.goalCol] = value
+        while n < maxCel:
+            for i in range(self.nbRow):
+                for j in range(self.nbCol):
+                    if pathMap[i][j] == value and i != 0 and pathMap[i - 1][j] == 0:
+                        pathMap[i - 1][j] = value + 1
+                    if pathMap[i][j] == value and i != self.nbRow - 1 and pathMap[i + 1][j] == 0:
+                        pathMap[i + 1][j] = value + 1
+                    if pathMap[i][j] == value and j and pathMap[i][j - 1] == 0:
+                        pathMap[i][j - 1] = value + 1
+                    if pathMap[i][j] == value and j != self.nbCol - 1 and pathMap[i][j + 1] == 0:
+                        pathMap[i][j + 1] = value + 1
+            value = value + 1
+            n = n + 1
 
         # To plot grid filled with numbers:
         # func: plotPlanningMap(arg1. arg2, arg3)

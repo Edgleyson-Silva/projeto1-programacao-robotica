@@ -95,7 +95,13 @@ class robotClass:
         # arg2: number of row
         # arg3: number of col
 
-    def move(...):
+    def move(self, path):
+        movement = path[0]
+        moveRow = movement[0]
+        moveCol = movement[1]
+        self.row = moveRow
+        self.Col = moveCol
+
 
 
 

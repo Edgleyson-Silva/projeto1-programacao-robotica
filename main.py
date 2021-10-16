@@ -50,45 +50,48 @@ class robotClass:
         value = 1
         n = 1
         if self.nbRow > self.nbCol:
-            maxCel = 2 * self.nbRow - 1
+            maxCel = 2*self.nbRow - 1
         elif self.nbCol > self.nbRow:
-            maxCel = 2 * self.nbCol - 1
+            maxCel = 2*self.nbCol -1
         else:
-            maxCel = 2 * self.nbRow - 1
+            maxCel = 2*self.nbRow - 1
         pathMap[self.goalRow, self.goalCol] = value
         while n < maxCel:
             for i in range(self.nbRow):
                 for j in range(self.nbCol):
-                    if pathMap[i][j] == value and i != 0 and pathMap[i - 1][j] == 0:
-                        pathMap[i - 1][j] = value + 1
-                    if pathMap[i][j] == value and i != self.nbRow - 1 and pathMap[i + 1][j] == 0:
-                        pathMap[i + 1][j] = value + 1
-                    if pathMap[i][j] == value and j and pathMap[i][j - 1] == 0:
-                        pathMap[i][j - 1] = value + 1
-                    if pathMap[i][j] == value and j != self.nbCol - 1 and pathMap[i][j + 1] == 0:
-                        pathMap[i][j + 1] = value + 1
+                    if pathMap[i][j] == value and i != 0 and pathMap[i-1][j] == 0:
+                        pathMap[i-1][j] = value + 1
+                    if pathMap[i][j] == value and i != self.nbRow - 1 and pathMap[i+1][j] == 0:
+                        pathMap[i+1][j] = value + 1
+                    if pathMap[i][j] == value and j != 0 and pathMap[i][j-1] == 0:
+                        pathMap[i][j-1] = value + 1
+                    if pathMap[i][j] == value and j != self.nbCol - 1 and pathMap[i][j+1] == 0:
+                        pathMap[i][j+1] = value + 1
             value = value + 1
             n = n + 1
-            while robotPosition != 1:
-                if pathMap[rowPosition - 1][colPosition] == robotPosition - 1:
-                    robotPosition = pathMap[rowPosition - 1][colPosition]
-                    path.append((rowPosition - 1, colPosition))
-                    rowPosition = rowPosition - 1
+        rowPosition = self.row
+        colPosition = self.col
+        robotPosition = pathMap[self.row][self.col]
+        while robotPosition != 1:
+            if pathMap[rowPosition - 1][colPosition] == robotPosition - 1 and self.map[rowPosition - 1][colPosition] != -1:
+               robotPosition = pathMap[rowPosition - 1][colPosition]
+               self.path.append((rowPosition - 1, colPosition))
+               rowPosition = rowPosition - 1
 
-                if pathMap[rowPosition + 1][colPosition] == robotPosition - 1:
-                    robotPosition = pathMap[rowPosition + 1][colPosition]
-                    path.append((rowPosition + 1, colPosition))
-                    rowPosition = rowPosition + 1
+            if pathMap[rowPosition + 1][colPosition] == robotPosition - 1 and self.map[rowPosition + 1][colPosition] != -1:
+               robotPosition = pathMap[rowPosition + 1][colPosition]
+               self.path.append((rowPosition + 1, colPosition))
+               rowPosition = rowPosition + 1
 
-                if pathMap[rowPosition][colPosition - 1] == robotPosition - 1:
-                    robotPosition = pathMap[rowPosition][colPosition - 1]
-                    path.append((rowPosition, colPosition - 1))
-                    colPosition = colPosition - 1
+            if pathMap[rowPosition][colPosition - 1] == robotPosition - 1 and self.map[rowPosition][colPosition - 1] != -1:
+               robotPosition = pathMap[rowPosition][colPosition - 1]
+               self.path.append((rowPosition, colPosition - 1))
+               colPosition = colPosition - 1
 
-                if pathMap[rowPosition][colPosition + 1] == robotPosition - 1:
-                    robotPosition = pathMap[rowPosition][colPosition + 1]
-                    path.append((rowPosition, colPosition + 1))
-                    colPosition = colPosition + 1
+            if pathMap[rowPosition][colPosition + 1] == robotPosition - 1 and self.map[rowPosition][colPosition + 1] != -1:
+                robotPosition = pathMap[rowPosition][colPosition + 1]
+                self.path.append((rowPosition, colPosition + 1))
+                colPosition = colPosition + 1
         # To plot grid filled with numbers:
         # func: plotPlanningMap(arg1. arg2, arg3)
         # arg1: matrix object representing the grid filled with values

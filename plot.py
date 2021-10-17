@@ -23,8 +23,8 @@ def plotRealEnv(env, rob):
             envMaptoPlot[i][j] = env.map[i][j]
 
     # Allocate values for start and goal
-    envMaptoPlot[2][2] = 1
-    envMaptoPlot[rob.rowGoal][rob.colGoal] = 2
+    envMaptoPlot[rob.row][rob.col] = 1
+    envMaptoPlot[rob.goalRow][rob.goalCol] = 2
 
     # Create discrete colormap
     cmap = colors.ListedColormap(['black', 'white', 'red','green'])
@@ -76,7 +76,7 @@ def plotRobEnv(rob):
 
     for index in rob.path:
         robMaptoPlot[index[0]][index[1]] = 1
-    robMaptoPlot[rob.rowGoal][rob.colGoal] = -2
+    robMaptoPlot[rob.goalRow][rob.goalCol] = -2
     robMaptoPlot[rob.row][rob.col] = -3
 
     # create discrete colormap

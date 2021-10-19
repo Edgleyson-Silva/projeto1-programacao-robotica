@@ -82,8 +82,8 @@ class robotClass:
                     self.path.append((rowPosition - 1, colPosition))
                     rowPosition = rowPosition - 1
 
-                if pathMap[rowPosition + 1][colPosition] == robotPosition - 1 and self.map[rowPosition + 1][
-                    colPosition] != -1:
+                if rowPosition + 1 != self.nbRow and pathMap[rowPosition + 1][colPosition] == robotPosition - 1 and \
+                        self.map[rowPosition + 1][colPosition] != -1:
                     robotPosition = pathMap[rowPosition + 1][colPosition]
                     self.path.append((rowPosition + 1, colPosition))
                     rowPosition = rowPosition + 1
@@ -94,8 +94,8 @@ class robotClass:
                     self.path.append((rowPosition, colPosition - 1))
                     colPosition = colPosition - 1
 
-                if pathMap[rowPosition][colPosition + 1] == robotPosition - 1 and self.map[rowPosition][
-                    colPosition + 1] != -1:
+                if colPosition + 1 != self.nbCol and pathMap[rowPosition][colPosition + 1] == robotPosition - 1 and \
+                        self.map[rowPosition][colPosition + 1] != -1:
                     robotPosition = pathMap[rowPosition][colPosition + 1]
                     self.path.append((rowPosition, colPosition + 1))
                     colPosition = colPosition + 1

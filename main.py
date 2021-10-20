@@ -12,7 +12,7 @@ class envClass:
     def __init__(self, nbRow, nbCol):
         self.nbRow = nbRow
         self.nbCol = nbCol
-        self.map = zeros((nbRow,nbCol)) #cria matriz[nbRow x nbCol] representando o ambiente
+        self.map = zeros((nbRow,nbCol))
 
     def addObstacle(self, row, col):
         self.map[row][col] = -1
@@ -69,7 +69,7 @@ class robotClass:
             value = value + 1
             n = n + 1
         self.path = []
-        if pathMap[self.row][self.col] < 1:
+        if pathMap[self.row][self.col] == -1:
             print("Não foi possível atingir o objetivo")
         else:
             rowPosition = self.row
@@ -100,11 +100,6 @@ class robotClass:
                     self.path.append((rowPosition, colPosition + 1))
                     colPosition = colPosition + 1
         plotPlanningMap(pathMap, self.nbRow, self.nbCol)
-        # To plot grid filled with numbers:
-        # func: plotPlanningMap(arg1. arg2, arg3)
-        # arg1: matrix object representing the grid filled with values
-        # arg2: number of row
-        # arg3: number of col
 
     def move(self):
         self.row = self.path[0][0]
@@ -136,11 +131,3 @@ while robot.row != robot.goalRow or robot.col != robot.goalCol:
     robot.move()
 
 plotRobEnv(robot)
-# To plot the real environment with the robot position
-# func: plotRealEnv(arg1,arg2)
-# arg1: object type envClass
-# arg2: object type robotClass
-
-# To plot the environment known by the robot and the computed path
-# func: plotRobEnv(arg1)
-# arg1: object type robotClass
